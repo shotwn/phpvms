@@ -16,13 +16,19 @@ else
   export BRANCH=${GITHUB_REF##*/}
   echo "On branch $BRANCH"
 
-  export FILE_NAME="phpvms-${GitVersion_PPreReleaseTag}"
+  export FILE_NAME="phpvms-${GitVersion_PreReleaseLabel}"
 fi
-
 
 export TAR_NAME="$FILE_NAME.tar.gz"
 export ZIP_NAME="$FILE_NAME.zip"
 export BASE_DIR=`pwd`
+
+echo "BRANCH=${BRANCH}"
+echo "FILE_NAME=${FILE_NAME}"
+echo "TAR_NAME=${TAR_NAME}"
+echo "ZIP_NAME=${ZIP_NAME}"
+echo "BASE_DIR=${BASE_DIR}"
+echo "FULL_VERSION=${FULL_VERSION}"
 
 # https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#environment-files
 echo "BRANCH=${BRANCH}" >> "$GITHUB_ENV"
