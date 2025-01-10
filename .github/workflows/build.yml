@@ -35,6 +35,12 @@ jobs:
       with:
         versionSpec: '6.0.x'
 
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v3.1.1
+
+    - name: Get version
+      run: .github/scripts/version.sh
+
     # Configure Caching
     - name: Setup cache environment
       id: cache-env
@@ -94,6 +100,7 @@ jobs:
         php --version
         mysql --version
         composer install --dev --no-interaction --verbose
+        composer dump-autoload
         cp .github/scripts/env.test .env
         cp .github/scripts/phpunit.xml phpunit.xml
         .github/scripts/version.sh ${{ env.NBGV_SemVer2 }}
@@ -125,6 +132,12 @@ jobs:
       with:
         versionSpec: '6.0.x'
 
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v3.1.1
+
+    - name: Get version
+      run: .github/scripts/version.sh
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
@@ -150,10 +163,8 @@ jobs:
       run: |
         rm -rf vendor
         composer install --no-dev --prefer-dist --no-interaction --verbose
+        composer dump-autoload
         sudo chmod +x ./.github/scripts/*
-
-    - name: Get version
-      run: .github/scripts/version.sh
 
     - name: Discord Message
       id: discord
@@ -180,15 +191,6 @@ jobs:
         source: dist
         cdn_domain: phpvms.cdn.vmslabs.net
         permission: public-read
-
-#     - name: Upload S3
-#       uses: shallwefootball/s3-upload-action@master
-#       with:
-#         aws_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
-#         aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY}}
-#         aws_bucket: ${{ secrets.S3_BUCKET_NAME }}
-#         source_dir: 'dist'
-#         destination_dir: ''
 
     - name: Discord notification
       uses: Ilshidur/action-discord@0.3.2
@@ -261,6 +263,9 @@ jobs:
         uses: gittools/actions/gitversion/setup@v3.1.1
         with:
           versionSpec: '6.0.x'
+
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v3.1.1
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
