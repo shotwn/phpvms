@@ -29,11 +29,9 @@ jobs:
       with:
         fetch-depth: 0
 
-    # https://github.com/marketplace/actions/nerdbank-gitversioning
-    - name: Nerdbank.GitVersioning
-      uses: dotnet/nbgv@v0.4.2
-      with:
-          setAllVars: true
+    # https://github.com/marketplace/actions/gittools
+    - name: GitTools
+        uses: GitTools/actions@v3.1.1
 
     # Configure Caching
     - name: Setup cache environment
@@ -119,11 +117,9 @@ jobs:
       with:
         fetch-depth: 0
 
-    # https://github.com/marketplace/actions/nerdbank-gitversioning
-    - name: Get Version
-      uses: dotnet/nbgv@v0.4.2
-      with:
-        setAllVars: true
+    # https://github.com/marketplace/actions/gittools
+    - name: GitTools
+        uses: GitTools/actions@v3.1.1c
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
