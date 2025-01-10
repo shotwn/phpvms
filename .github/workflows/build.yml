@@ -165,7 +165,8 @@ jobs:
         composer dump-autoload
         sudo chmod +x ./.github/scripts/*
 
-    - name: Get version
+    - id: version
+      name: Get version
       run: .github/scripts/version.sh
 
     - name: Build Distro
@@ -187,7 +188,7 @@ jobs:
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       with:
-        args: ${{ steps.discord.outputs.discord_msg }}
+        args: ${{ steps.version.outputs.discord_msg }}
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
