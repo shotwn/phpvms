@@ -15,16 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Release mode
-        run: |
-          if (${{ github.event.release.prerelease }}) {
-            $releaseMode = "prerelease"
-          } else {
-            $releaseMode = "release"
-          }
-
-          echo "This is a $releaseMode release"
-          echo "releaseMode=$releaseMode" >> $env:GITHUB_OUTPUT
       - name: Install GitVersion
         uses: ./gitversion/setup
         with:
