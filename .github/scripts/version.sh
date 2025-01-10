@@ -37,3 +37,5 @@ echo "TAR_NAME=${TAR_NAME}" >> "$GITHUB_ENV"
 echo "ZIP_NAME=${ZIP_NAME}" >> "$GITHUB_ENV"
 echo "BASE_DIR=${BASE_DIR}" >> "$GITHUB_ENV"
 echo "FULL_VERSION=${FULL_VERSION}" >> "$GITHUB_ENV"
+
+echo "discord_msg=Version ${FULL_VERSION} is available, download: [zip](https://phpvms.cdn.vmslabs.net/$ZIP_NAME) | [tar](https://phpvms.cdn.vmslabs.net/$TAR_NAME)" >> "$GITHUB_OUTPUT"
