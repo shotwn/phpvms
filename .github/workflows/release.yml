@@ -15,8 +15,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      # https://github.com/marketplace/actions/gittools
       - name: Install GitVersion
-        uses: ./gitversion/setup
+        uses: gittools/actions/gitversion/setup@v3.1.1
         with:
           versionSpec: '6.0.x'
 
@@ -25,9 +26,9 @@ jobs:
         with:
             versionSpec: '0.18.x'
 
-      - name: Use GitVersion
-        id: gitversion # step id used as reference for output values
-        uses: ./gitversion/execute
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.1.1
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
