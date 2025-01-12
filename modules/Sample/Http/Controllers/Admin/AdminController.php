@@ -29,9 +29,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-    }
+    public function store(Request $request) {}
 
     /**
      * Show the specified resource.
@@ -52,14 +50,10 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
-    {
-    }
+    public function update(Request $request) {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
-    {
-    }
+    public function destroy() {}
 }

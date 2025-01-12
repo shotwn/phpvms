@@ -13,7 +13,6 @@ class SampleController extends Controller
     /**
      * Just send out a message
      *
-     * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -23,8 +22,6 @@ class SampleController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function hello(Request $request)

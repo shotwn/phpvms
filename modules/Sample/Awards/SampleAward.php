@@ -17,8 +17,6 @@ class SampleAward extends Award
      * user the award is being checked against
      *
      * @param null $params Parameters passed in from the UI
-     *
-     * @return bool
      */
     public function check($params = null): bool
     {
