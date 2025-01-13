@@ -98,7 +98,7 @@ branches:
     is-main-branch: false
 ignore:
   sha: []
-mode: ContinuousDelivery
+mode: ManualDeployment
 label: '{BranchName}'
 increment: Inherit
 prevent-increment:
