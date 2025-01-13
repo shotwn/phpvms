@@ -120,6 +120,11 @@ jobs:
   # distro, and then creates the artifact to push up to S3 or wherever
   artifacts:
     name: 'Create release package'
+    permissions:
+      contents: write
+      packages: write
+      attestations: write
+      id-token: write
     needs: [build]
     runs-on: ubuntu-latest
     if: github.repository == 'phpvms/phpvms' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
@@ -200,7 +205,7 @@ jobs:
   docker:
     name: 'Create docker image'
     permissions:
-      contents: read
+      contents: write
       packages: write
       attestations: write
       id-token: write
