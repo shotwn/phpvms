@@ -11,6 +11,11 @@ env:
 jobs:
   release:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     strategy:
       matrix:
         os: [ ubuntu-latest ]

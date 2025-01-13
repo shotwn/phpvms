@@ -199,6 +199,11 @@ jobs:
 
   docker:
     name: 'Create docker image'
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     runs-on: ubuntu-latest
     needs: [build]
     if: github.repository == 'phpvms/phpvms' && github.event_name != 'pull_request' && (github.ref == 'refs/heads/dev')
