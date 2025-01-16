@@ -124,7 +124,9 @@ class UserService extends Service
     public function removeUser(User $user)
     {
         // Detach all roles from this user
-        $user->removeRoles($user->roles->toArray());
+        foreach ($user->roles as $role) {
+            $user->removeRole($role);
+        }
 
         // Delete any fields which might have personal information
         UserFieldValue::where('user_id', $user->id)->delete();
@@ -151,7 +153,7 @@ class UserService extends Service
     public function addUserToRole(User $user, string $roleName): User
     {
         $role = Role::where(['name' => $roleName])->first();
-        $user->addRole($role);
+        $user->assignRole($role);
 
         return $user;
     }
@@ -294,7 +296,7 @@ class UserService extends Service
             }
 
             // See if the difference is larger than what the setting calls for
-            if ($date->diffInDays($diff_date) <= $leave_days) {
+            if (abs($date->diffInDays($diff_date)) <= $leave_days) {
                 return false;
             }
 

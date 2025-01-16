@@ -43,7 +43,7 @@ trait TestData
 
         /** @var UserService $userSvc */
         $userSvc = app(UserService::class);
-        $userSvc->addUserToRole($admin, 'admin');
+        $userSvc->addUserToRole($admin, 'super_admin');
 
         return $admin;
     }
