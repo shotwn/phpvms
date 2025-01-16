@@ -4,7 +4,6 @@ tag-prefix: '[vV]?'
 mode: ManualDeployment
 workflow: GitHubFlow/v1
 label: ''
-next-version: 7.0.0
 version-in-branch-pattern: (?<version>[vV]?\d+(\.\d+)?(\.\d+)?).*
 major-version-bump-message: \+semver:\s?(breaking|major)
 minor-version-bump-message: \+semver:\s?(feature|minor)
@@ -39,13 +38,13 @@ branches:
     is-main-branch: true
     pre-release-weight: 55000
   release:
-    mode: ManualDeployment
+    mode: ContinuousDelivery
     label: stable
     increment: Patch
     prevent-increment:
-      of-merged-branch: true
+      of-merged-branch: false
       when-branch-merged: false
-      when-current-commit-tagged: false
+      when-current-commit-tagged: true
     track-merge-target: false
     track-merge-message: true
     regex: ^releases?[/-](?<BranchName>.+)
