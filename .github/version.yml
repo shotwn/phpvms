@@ -4,6 +4,7 @@ tag-prefix: '[vV]?'
 mode: ManualDeployment
 workflow: GitHubFlow/v1
 label: ''
+next-version: 7.0.0
 version-in-branch-pattern: (?<version>[vV]?\d+(\.\d+)?(\.\d+)?).*
 major-version-bump-message: \+semver:\s?(breaking|major)
 minor-version-bump-message: \+semver:\s?(feature|minor)
@@ -13,7 +14,7 @@ tag-pre-release-weight: 60000
 commit-date-format: yyyy-MM-dd
 merge-message-formats: {}
 update-build-number: true
-semantic-version-format: Strict
+semantic-version-format: Loose
 strategies:
 - Fallback
 - ConfiguredNextVersion
