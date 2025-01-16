@@ -9,11 +9,10 @@ major-version-bump-message: \+semver:\s?(breaking|major)
 minor-version-bump-message: \+semver:\s?(feature|minor)
 patch-version-bump-message: \+semver:\s?(fix|patch)
 no-bump-message: \+semver:\s?(none|skip)
-tag-pre-release-weight: 60000
 commit-date-format: yyyy-MM-dd
 merge-message-formats: {}
 update-build-number: true
-semantic-version-format: Loose
+semantic-version-format: Strict
 strategies:
 - Fallback
 - ConfiguredNextVersion
@@ -24,7 +23,7 @@ strategies:
 branches:
   main:
     label: 'dev'
-    mode: ManualDeployment
+    mode: ContinuousDelivery
     increment: Patch
     prevent-increment:
       of-merged-branch: true
@@ -39,7 +38,7 @@ branches:
     pre-release-weight: 55000
   release:
     mode: ContinuousDelivery
-    label: stable
+    label: 'alpha'
     increment: Patch
     prevent-increment:
       of-merged-branch: false
