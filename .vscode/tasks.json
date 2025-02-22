@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start Sail",
+            "type": "shell",
+            "command": "cd ${workspaceFolder} && vendor/bin/sail up",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "group": "dev"
+            }
+        },
+        {
+            "label": "Quasar ForgeZeroDocumentations Module UI",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/modules/ForgeZeroDocumentationsDev/Resources/js/ && quasar dev",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "group": "dev"
+            },
+            "problemMatcher": "$eslint-stylish"
+        },
+        {
+            "label": "Develop ForgeZeroDocumentations Module",
+            "dependsOn": [
+                "Start Sail",
+                "Quasar ForgeZeroDocumentations Module UI"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        }
+    ]
+}
